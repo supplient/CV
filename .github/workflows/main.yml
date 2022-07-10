@@ -25,6 +25,9 @@ jobs:
       - name: Build temporary directory
         run: mkdir -p "${{ github.workspace }}/md"
 
+      - name: Build temporary directory
+        run: mkdir -p "${{ github.workspace }}/html"
+
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
