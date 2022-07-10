@@ -31,7 +31,7 @@ jobs:
       - name: Markdown => HTML
         uses: docker://pandoc/core
         with:
-          args: "-s -o /github/workspace/index.html --css=/github/workspace/draft.css /github/workspace/draft.md"
+          args: "-s -o /github/workspace/index.html --css=draft.css /github/workspace/draft.md"
         
       - name: Deploy to gp-pages
         uses: peaceiris/actions-gh-pages@v3
