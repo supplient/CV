@@ -1,0 +1,25 @@
+{
+	// See https://go.microsoft.com/fwlink/?LinkId=733558
+	// for the documentation about the tasks.json format
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Markdown => PDF",
+			"type": "shell",
+			"command": "pandoc -o draft.pdf -t html --pdf-engine=wkhtmltopdf --css=draft.css draft.md",
+			"problemMatcher": []
+		},
+		{
+			"label": "Markdown => HTML",
+			"type": "shell",
+			"command": "pandoc -s -o draft.html --css=draft.css draft.md",
+			"problemMatcher": []
+		},
+		{
+			"label": "HTML => PDF",
+			"type": "shell",
+			"command": "wkhtmltopdf --enable-local-file-access draft.html draft.pdf",
+			"problemMatcher": []
+		}
+	]
+}
