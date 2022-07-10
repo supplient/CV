@@ -22,25 +22,19 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      - name: Build temporary directory
-        run: mkdir -p "${{ github.workspace }}/md"
-
-      - name: Build temporary directory
-        run: mkdir -p "${{ github.workspace }}/html"
-
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          path: "${{ github.workspace }}/md"
+          path: "${{ github.workspace }}"
 
       - name: Markdown => HTML
         uses: docker://pandoc/core
         with:
-          args: "-s -o /github/workspace/html/index.html --css=/github/workspace/md/draft.css /github/workspace/md/draft.md"
+          args: "-s -o /github/workspace/index.html --css=/github/workspace/draft.css /github/workspace/draft.md"
         
       - name: Deploy to gp-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: "${{ github.workspace }}/html"
+          publish_dir: "${{ github.workspace }}"
