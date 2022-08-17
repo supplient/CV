@@ -8,10 +8,15 @@
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
-    span.underline{text-decoration: underline;}
-    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: 1;}
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="draft.css" />
@@ -29,14 +34,19 @@
 <li>研究方向：计算机图形学 - 物理仿真</li>
 <li>游戏兴趣：工程师游戏、JRPG、独立游戏。e.g. 缺氧、戴森球、环世界、异星工厂；最终幻想系列、炼金工房系列；Celeste、Hades、Noita、5D
 Chess。</li>
-<li>目前在网易互娱N星计划实习中</li>
+<li>目前在网易互娱N星计划实习中
+<ul>
+<li>实习内容为为UE编写插件，使其方便地支持使用IK对重定向后的动画进行修正。</li>
+</ul></li>
 </ul>
 <h1 id="二研究方向物理仿真">二、研究方向：物理仿真</h1>
 <h2
 id="硕士毕业设计实时柔体切割仿真">硕士毕业设计：实时柔体切割仿真</h2>
 <p>重点研究如何处理<strong>复杂的切割路径</strong>，以及如何达到<strong>实时水准</strong>。</p>
-<p>Computer Methods and Programs in
-Biomedicine在投（医工领域的期刊，中科院分区2区）。</p>
+<p><a
+href="https://www.journals.elsevier.com/computer-methods-and-programs-in-biomedicine">Computer
+Methods and Programs in
+Biomedicine</a>在投（医工领域的期刊，中科院分区2区）。</p>
 <p>技术栈：</p>
 <ul>
 <li>PBD(Position Based
@@ -58,19 +68,19 @@ Matching进行柔体仿真的情况下，检测切割发生时间和位置的方
 <p><img src="material/master_paper/curve.png" /> <img
 src="material/master_paper/twocut.png" /> <img
 src="material/master_paper/dis.png" /></p>
-<h2 id="业余对pbd进行的理论学习">业余对PBD进行的理论学习</h2>
+<h2 id="业余的仿真理论学习">业余的仿真理论学习</h2>
 <ul>
 <li><a
-href="https://zhuanlan.zhihu.com/p/339879519">对PBD的阅读笔记</a>：单纯解读了下PBD的原论文。接受度还算高，知乎3k阅读、19赞同、27收藏。demo使用taichi编写。</li>
+href="https://zhuanlan.zhihu.com/p/339879519">对PBD的阅读笔记</a>：解读了PBD的原论文。demo使用taichi编写。</li>
 <li><a
 href="https://zhuanlan.zhihu.com/p/518244355">站在最优化角度对XPBD进行的解释</a>：XPBD为PBD的作者站在新的角度上对PBD做的解释，并稍作了些修改。不过原作者自始至终都是站在约束投影的角度进行解释。我则是站在最优化的角度上重新做了解释，更符合近些年的流行趋势。</li>
 <li><a
-href="https://supplient.github.io/blogs/Research/PhysicsSimulation/Solver/PBD/FSMS_%E5%8F%A6%E4%B8%80%E8%A7%86%E7%82%B9.html">站在最优化角度对Projective
+href="https://supplient.github.io/blogs/Research/PhysicsSimulation/Solver/PBD/FSMS_Optimization.html">站在最优化角度对Projective
 Dynamics的解释</a>：PD的原作者最开始也是站在约束投影的角度上进行解释，近些年则开始站在最优化角度进行解释。我延续他的思想，对他的过往论文用同样的方法进行了解释。</li>
 <li><a
 href="https://zhuanlan.zhihu.com/p/350170106">对FEPR的阅读笔记</a>：原作者仿照PBD的约束投影思想，通过调整系统动量来确保动量守恒、能量守恒。我将其作为PBD思想的延伸进行了学习。</li>
 <li><a
-href="https://supplient.github.io/blogs/Research/PhysicsSimulation/Solver/PBD/ADMM.html">对ADMM的阅读笔记</a>：原作者用ADMM方法求解隐式牛顿法的方程，和我一直以来的最优化思想一致，所以研究了下。</li>
+href="https://supplient.github.io/blogs/Research/PhysicsSimulation/Solver/PBD/ADMM.html">对ADMM的阅读笔记</a>：原作者用ADMM方法求解隐式欧拉法应用在牛顿运动方程时的方程组，和我一直以来的最优化思想一致，所以研究了下。</li>
 </ul>
 <h2 id="业余的仿真并行编程经验">业余的仿真/并行编程经验</h2>
 <ul>
@@ -80,7 +90,7 @@ Cube实现</a>：除了CUDA以外没有调用任何第三方库，包括inclusiv
 href="https://github.com/supplient/SceneGraph/tree/cloth_simulation">简单布料仿真及渲染</a>：基于显式欧拉法和弹簧质点法的简单布料仿真，在自己写的场景图渲染引擎里实现。
 <img
 src="material/cloth_simulation/cloth_render_in_my_engine.jpg" /></li>
-<li>布料碰撞检测：基于XPBD的布料仿真，碰撞检测和碰撞响应都是手写的。使用taichi编写，渲染使用blender。
+<li>布料碰撞检测：基于XPBD的布料仿真，其中碰撞检测和碰撞响应都是手写的。使用taichi编写，渲染使用blender。
 <img
 src="material/cloth_simulation/cloth_collision_in_blender.png" /></li>
 </ul>
@@ -91,11 +101,11 @@ href="https://github.com/supplient/SceneGraph">场景图渲染引擎</a></h2>
 <li>在阅读《Real-time Rendering》期间作为练习开发的。</li>
 <li>内部以类似fbx文件的方式表示场景图，并进行实时渲染。</li>
 <li>手写实现了phong model
-shader、基于LTC的区域光、位移贴图、法线贴图、fbx模型加载</li>
+shader、基于LTC的区域光、位移贴图、法线贴图、fbx模型加载等</li>
 <li>调用开源代码，支持了FXAA和HBAO</li>
 </ul>
-<p><img src="material/scene_graph_engine/点光源阴影.jpeg" width="150" />
-<img src="material/scene_graph_engine/区域光源.jpeg" width="150" /></p>
+<p><img src="material/scene_graph_engine/点光源阴影.jpeg" width="200" />
+<img src="material/scene_graph_engine/区域光源.jpeg" width="200" /></p>
 <h2 id="用unity或webgl写的demo">用Unity或WebGL写的demo</h2>
 <ul>
 <li>实验性的<a href="https://github.com/supplient/GeometryLevel">unity
@@ -127,19 +137,8 @@ href="https://zhuanlan.zhihu.com/p/397600286">变换矩阵对应的物体拉伸�
 <h1 id="四学业与编程">四、学业与编程</h1>
 <h2 id="数学基础">数学基础</h2>
 <ul>
-<li>考研初试数一133/150（线性代数+微积分+概率统计）</li>
-<li>研究生课程数值分析83/100（课程内容包括常微分方程的数值解法、数值积分、非线性方程组的数值解法等）</li>
-</ul>
-<h2 id="学习c11时写的一些博客">学习C++11时写的一些博客</h2>
-<ul>
-<li><a
-href="https://zhuanlan.zhihu.com/p/390749564">std::move随记</a></li>
-<li><a
-href="https://zhuanlan.zhihu.com/p/404503798">C++检查模板参数的成员函数是否具有指定签名</a></li>
-<li><a
-href="https://zhuanlan.zhihu.com/p/406458945">c++中使用模板类内部类型时typename关键词的使用</a></li>
-<li><a href="https://zhuanlan.zhihu.com/p/420701503">c++ lambda
-expression -&gt; C-sytle function pointer</a></li>
+<li>考研初试数一133/150（线性代数、微积分、概率统计）</li>
+<li>研究生课程数值分析83/100（常微分方程的数值解法、数值积分、非线性方程组的数值解法等）</li>
 </ul>
 <h2 id="跨度至少半学期的课程大作业">跨度至少半学期的课程大作业</h2>
 <ul>
@@ -152,6 +151,17 @@ href="https://github.com/supplient/complier">编译器</a></li>
 <li>我设计的语言叫<a
 href="https://github.com/supplient/RTEX/blob/master/output/output.pdf">RTEX</a>，一种markdown扩展。允许在markdown中插入可执行的rtex语句，并将执行结果直接输出到结果文档中。</li>
 </ul></li>
+</ul>
+<h2 id="学习c11时写的一些博客">学习C++11时写的一些博客</h2>
+<ul>
+<li><a
+href="https://zhuanlan.zhihu.com/p/390749564">std::move随记</a></li>
+<li><a
+href="https://zhuanlan.zhihu.com/p/404503798">C++检查模板参数的成员函数是否具有指定签名</a></li>
+<li><a
+href="https://zhuanlan.zhihu.com/p/406458945">c++中使用模板类内部类型时typename关键词的使用</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/420701503">c++ lambda
+expression -&gt; C-sytle function pointer</a></li>
 </ul>
 </body>
 </html>
